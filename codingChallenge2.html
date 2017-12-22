@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <title>codingChallenge2</title>
+        <script src = "codingChallenge2.js"> </script>
+        <script src = JSON.js> </script>
+        <h1> Coding Challenge 2 </h1>
+    </head>
+    <body>
+        <p> Below are the exercises. </p>
+
+        <input type="button" onclick="sayHello()" value="Say Hello" />
+        <input type="button" onclick="alert(me.name)" value="Name" />
+        <input type="button" onclick="alert(me.age)" value="Age" />
+        <input type="button" onclick="me.age += 1" value="Age + 1" />
+        <input type="button" onclick="changeName()" value="Change name" />
+        <input type="button" onclick="testMe()" value="Is person 20-40?" />
+        <br/>
+        <br/>
+        <p> Type a number to square below. </p>
+        <input type="text" id = "number1" value="" />
+        <input type="button" onclick="squareNumber()" value="Square" />
+        <br/>
+        <p> Type three numbers to add below. </p>
+        <input type="text" id = "number2" value="" />
+        <input type="text" id = "number3" value="" />
+        <input type="text" id = "number4" value="" />
+        <input type="button" onclick="sum3();" value="Sum three numbers" />
+
+        <p> Type a string and a number to concatenate below. </p>
+        <input type="text" id = "string" value="" />
+        <input type="text" id = "number5" value="" />
+        <input type="button" onclick="concat();" value="Concatenate" />
+        <br/>
+        <br/>
+        <input type="button" onclick="alert(people)" value="Print Current People" />
+        <input type="button" onclick="addPerson()" value="Add Dave" />
+        <input type="button" onclick="removePerson()" value="Remove Last Person" />
+        <br/><br/>
+        <input type="button" onclick="fizzBuzz()" value="Perform Fizz Buzz to console" />
+        <br/><br/>
+        <input type="text" id = "iterationNumber" value="" />
+        <br/><br/>
+        <input type="button" onclick="iteration4()" value="Perform Iteration 4 with number above to console" />
+        <br/><br/>
+
+        <input type="text" id = "strings4" value="" />
+        <br/><br/>
+        <input type="button" onclick="tripleCounter()" value="Perform triple Counter (Strings 4) with number above" />
+        <br/><br/>
+        <input type="button" onclick="createTag()" value="Create a paragraph below" />
+        <br/><br/>
+        <input type="button" onclick="deletePara()" value="Delete the paragraphs below" />
+        <p id = "place1"> </p>
+
+        <h2>JSON Exercises</h2>
+        <input type="button" onclick="JSON1()" value="Access first JSON file" />
+        <br/><br/>
+        <input type="button" onclick="JSON2()" value="Access second JSON file" />
+        <br/><br/>
+        <p> Below you can search for kings and queens once the second JSON file has been accessed and the page has alerted you of success of this. </p>
+        <input type="text" id = "monarchSearch" value="" />
+        <input type="button" onclick="monarchSearch()" value="Search" />
+        <br/> <br/>
+        <select size = "10" id = "searchResults" onchange ="loadMonarch()">
+        </select>
+    </body>
+</html>
