@@ -2,13 +2,13 @@ var garage = [
     {type: "Truck",
     colour: "Black",
     numberPlate: "R277 EUG",
-    age: 4,
+    age: "3-5 years",
     faults: []},
 
     {type: "Bike",
     colour: "Red",
     numberPlate: "E124 YGH",
-    age: 2,
+    age: "1-3 years",
     faults: []}
 ];
 var x;
@@ -43,7 +43,9 @@ function addVehicle() {
      var typeIn = document.getElementById("inputType").value;
      var colourIn = document.getElementById("inputColour").value;
      var numberPlateIn = document.getElementById("inputNumberPlate").value;
-     var ageIn = document.getElementById("inputAge").value;
+     var ageOptions = document.getElementById("inputAge");
+     var ageInIndex = ageOptions.options[ageOptions.selectedIndex];
+     var ageIn = ageInIndex.value;
      var vehicleIn = {
          type: typeIn,
          colour: colourIn,
@@ -71,8 +73,18 @@ function removeVehicle() {
 function billVehicle() {
     var numberPlateBill = x.options[x.selectedIndex].value;
     var vehicleBill = garage.find(a => a.numberPlate === numberPlateBill);
-    var costBill = vehicleBill.age*10 + 7;
-    alert("The cost of the bill will be £" + costBill + ".\nBills are calculated as being £(10 * age of vehicle + 7).\nThank you.")
+    var costBill;
+    if (vehicleBill.age === "Less than a year" || vehicleBill.age === "1-3 years") {
+        costBill = 30;
+    } else {
+        costBill = 50;
+    }
+    costBill += vehicleBill.faults.length*20;
+    alert("The cost of the bill will be £" + costBill + ".\nBills are calculated " 
+    + "as being £30 for cars up to 3 years old, and £50 otherwise. Your car is " 
+    + vehicleBill.age + " old. Any faults added to the car are £20 each, and since "
+    + "you have " + vehicleBill.faults.length + " fault(s), your bill is £" +
+    costBill + ".\nThank you.")
 }
 
 function addFault() {
