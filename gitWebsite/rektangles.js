@@ -26,15 +26,17 @@ function generateRek() {
     generateLast();
     generateSpace();
     generateSpaceyOnes();
-    //console.log(left);
-    //console.log(right);
-    //console.log(A1);
-    //console.log(An);
-    //console.log(space);
+    console.log(left);
+    console.log(right);
+    console.log(A1);
+    console.log(An);
+    console.log(space);
     console.log(B);
     createBox();
     writeFirst();
-    writeRest();
+    writeMiddle();
+    writeLast();
+    continueWriting();
 
 
 }
@@ -59,13 +61,16 @@ function generateRight() {
 function generateFirst() {
     A1 = [word.charAt(0)].concat(left);
     counter1 = parseInt(width);
+    let countUpF = 0;
     while (counter1 > 1) {
-        if (counter1 % 2 === 1) {
+        if (countUpF % 2 === 0) {
             A1 = A1.concat(right);
             counter1--;
+            countUpF++;
         } else {
             A1 = A1.concat(left);
             counter1--;
+            countUpF++;
         }
 
     }
@@ -74,13 +79,16 @@ function generateFirst() {
 function generateLast() {
     An = [word.charAt(word.length-1)].concat(right);
     countern = parseInt(width);
+    let countUpL = 0;
     while (countern > 1) {
-        if (countern % 2 === 1) {
+        if (countUpL % 2 === 0) {
             An = An.concat(left);
             countern--;
+            countUpL--;
         } else {
             An = An.concat(right);
             countern--;
+            countUpL--;
         }
 
     }
@@ -96,9 +104,7 @@ function generateSpace() {
 function generateSpaceyOnes() {
     B = [];
     for(let i = 2; i < word.length; i++) {
-        obj = {number: i,
-                array: getSpacey(i)};
-        B.push(obj);
+        B.push(getSpacey(i));
     }
 }
 function getSpacey(k) {
@@ -128,9 +134,34 @@ function createBox() {
 function writeFirst() {
     box.innerHTML += A1.toString() + "\n";
 }
-function writeRest() {
+function writeMiddle() {
     for (let k=2; k< word.length; k++) {
-        var filtered = B.filter(b => b.number = k)
-        box.innerHTML += filtered[0].array + "\n";
+        box.innerHTML += B[k-2].toString() + "\n";
+    }
+}
+function writeReverseMiddle() {
+    for (let k= word.length - 1; k > 1; k--) {
+        box.innerHTML += B[k-2].toString() + "\n";
+    }
+}
+function writeLast() {
+    box.innerHTML += An.toString() + "\n";
+}
+
+function continueWriting() {
+    let counterl = length;
+    let countUp = 0;
+    while (counterl > 1) {
+        if (countUp % 2 === 0) {
+            writeReverseMiddle();
+            writeFirst();
+            counterl--;
+            countUp++;
+        } else {
+            writeMiddle();
+            writeLast();
+            counterl--;
+            countUp++;
+        }
     }
 }
